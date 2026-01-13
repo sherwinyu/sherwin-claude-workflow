@@ -31,7 +31,7 @@ Recommended locations:
 
 ### 2. Configure for Your Project
 
-Edit `workflow/CLAUDE.md` and update the Configuration section:
+Edit `workflow/CLAUDE.md` and update the Configuration section (or have Claude do it for you when running the skill)
 
 ```markdown
 | Placeholder     | Value                              |
