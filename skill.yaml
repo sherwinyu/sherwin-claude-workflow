@@ -1,0 +1,63 @@
+# Claude Code Skill Definition
+# Install via: cp skill.yaml your-project/.claude/skills/workflow.yaml
+
+name: workflow
+description: Development workflow with Linear integration and multi-agent architecture
+
+skills:
+  load:
+    description: Load the development workflow for the current project
+    user_invocable: true
+    prompt: |
+      # Load Development Workflow
+
+      Load the workflow configuration so you can start working on tickets immediately.
+
+      ## Step 1: Load Core Files
+
+      Read the main orchestrator file from the workflow directory in this project.
+      Look for it at common locations:
+      - `workflow/CLAUDE.md`
+      - `.claude/workflow/CLAUDE.md`
+      - `packages/client/src/modules/*/workflow/CLAUDE.md`
+
+      This is the **single source of truth** for the workflow.
+
+      ## Step 2: Load Knowledge Files (if they exist)
+
+      Also read these files if present:
+      - `workflow/knowledge/patterns.md`
+      - `workflow/knowledge/edge-cases.md`
+
+      ## Step 3: Ready Message
+
+      After reading, present to user:
+
+      ```markdown
+      ## Development Workflow Loaded
+
+      **Linear Project:** [PROJECT_NAME]
+      **Team:** [TEAM_NAME]
+      **Lint:** [LINT_COMMAND]
+
+      **Ready to work!** Try:
+      - "Pick up ticket TEAM-123 and run the workflow"
+      - "List open tickets"
+      - "Create a ticket for [description]"
+
+      **Agents available:**
+      - Context Agent - Codebase exploration
+      - Dev Agent - Implementation
+      - QA Agent - Browser automation
+
+      **Knowledge loaded:**
+      - patterns.md: [X patterns documented]
+      - edge-cases.md: [Y edge cases documented]
+      ```
+
+      ## Quick Load
+
+      This command should complete quickly without asking questions. Just:
+      1. Read the workflow files
+      2. Report what was loaded
+      3. Be ready for ticket commands
